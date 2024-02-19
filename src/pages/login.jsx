@@ -33,6 +33,7 @@ function LoginPage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ username, password }),
+          withCredentials: true,
           credentials: "include",
           redirect: "follow",
         }
@@ -43,10 +44,6 @@ function LoginPage() {
       }
 
       console.log(res.headers);
-
-      setTimeout(() => {
-        window.location.reload();
-      }, 5000);
     } catch (error) {
       console.log(error);
     }
