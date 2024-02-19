@@ -2,7 +2,7 @@ import { Router, Route, RootRoute } from "@tanstack/react-router";
 
 import HomePage from "./pages/home";
 
-import UserPage from "./pages/user";
+import LoginPage from "./pages/login";
 import BookPage from "./pages/book";
 import Root from "./App";
 
@@ -22,13 +22,13 @@ const bookRoute = new Route({
   component: BookPage,
 });
 
-const userRoute = new Route({
+const loginRoute = new Route({
   getParentRoute: () => rootRoute,
-  path: "/user:id",
-  component: UserPage,
+  path: "/login",
+  component: LoginPage,
 });
 
-const routeTree = rootRoute.addChildren([indexRoute, bookRoute, userRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, bookRoute, loginRoute]);
 
 export const router = new Router({ routeTree });
 export default router;
