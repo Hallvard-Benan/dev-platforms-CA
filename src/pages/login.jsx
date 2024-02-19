@@ -8,6 +8,7 @@ function LoginPage() {
       const res = await fetch(
         "https://my-fantastic-server.onrender.com/api/auth/status",
         { credentials: "include" }
+        //include the cookie in the request
       );
       const data = await res.json();
 
@@ -33,6 +34,7 @@ function LoginPage() {
           },
           body: JSON.stringify({ username, password }),
           credentials: "include",
+          redirect: "follow",
         }
       );
 
@@ -40,9 +42,11 @@ function LoginPage() {
         throw new Error("something went wrong", res);
       }
 
-      console.log(res);
+      console.log(res.headers);
 
-      window.location.reload();
+      setTimeout(() => {
+        window.location.reload();
+      }, 5000);
     } catch (error) {
       console.log(error);
     }
